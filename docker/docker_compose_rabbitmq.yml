@@ -1,0 +1,19 @@
+version: '3'
+volumes:
+  rabbit_node_1:
+services:
+  rabbitmq1:
+    image: rabbitmq:3.6.12-management
+    hostname: rabbit_node_1
+    tty: true
+    environment:
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "rabbitmq"
+      RABBITMQ_DEFAULT_VHOST: "rabbit_node_1"
+    labels:
+      NAME: "rabbit_node_1"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    volumes:
+      - rabbit_node_1:/var/lib/rabbitmq
